@@ -9,7 +9,7 @@ body{
 p{
 	font-family: 'Droid Sans Mono', serif;
 	font-size: 9em;
-	color: #FFF;
+	color: rgba(256,256,256,.75);
 	text-align: center;
 	border-bottom: 5px solid rgba(256,256,256,.3);
 }
