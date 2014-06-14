@@ -1,5 +1,9 @@
 /* hexacronos.js */
 
+var body = $('body'),
+	p = $('p');
+
+
 function tic(){
 	var time = new Date(), 
 
@@ -23,7 +27,5 @@ function tic(){
 	p.text(hours + " " + minutes + " " + seconds);
 }
 
-var body = $('body'),
-	p = $('p');
 tic();
 setInterval(function(){tic();},1000);
