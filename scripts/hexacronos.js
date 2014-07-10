@@ -1,35 +1,44 @@
 /* hexacronos.js */
 
-var body = document.body,
-    p = document.getElementsByTagName('p')[0];
+(function () {
+    var body = document.body,
+        p = document.getElementsByTagName('p')[0];
 
+    // Set Function to be ran every second
+    function tic() {
+        var time = new Date(),
+            validate,
+            hours,
+            minutes,
+            seconds,
+            hexcode;
 
-function tic() {
-    var time = new Date(),
-        validate,
-        hours,
-        minutes,
-        seconds,
-        hexcode;
+        /* Prevents Date methods from returning single digits */
+        validate = function (num) {
+            if (num > 9) {
+                return num.toString();
+            }
+            return "0" + num;
+        };
 
-    /* Prevents Date methods from returning single digits */
-    validate = function (num) {
-        if (num > 9) {
-            return num.toString();
-        }
-        return "0" + num;
-    };
+        // Get each increment fromt the current time
+        hours = validate(time.getHours());
+        minutes = validate(time.getMinutes());
+        seconds = validate(time.getSeconds());
 
-    hours = validate(time.getHours());
-    minutes = validate(time.getMinutes());
-    seconds = validate(time.getSeconds());
+        // Set up and assign attach to background node
+        hexcode = "#" + hours + minutes + seconds;
+        body.style.background = hexcode;
 
-    hexcode = "#" + hours + minutes + seconds;
-    body.style.background = hexcode;
-    p.innerHTML = hours + " " + minutes + " " + seconds;
-}
+        // Inject time String
+        p.innerHTML = hours + " " + minutes + " " + seconds;
+    }
 
-tic();
-setInterval(function () {
+    // First Run
     tic();
-}, 1000);
+
+    // Subsequent Runs
+    setInterval(function () {
+        tic();
+    }, 1000);
+})();
