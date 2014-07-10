@@ -1,7 +1,7 @@
 /* hexacronos.js */
 
-var body = $('body'),
-    p = $('p');
+var body = document.body,
+    p = document.getElementsByTagName('p')[0];
 
 
 function tic() {
@@ -25,8 +25,8 @@ function tic() {
     seconds = validate(time.getSeconds());
 
     hexcode = "#" + hours + minutes + seconds;
-    body.css('background', hexcode);
-    p.text(hours + " " + minutes + " " + seconds);
+    body.style.background = hexcode;
+    p.innerHTML = hours + " " + minutes + " " + seconds;
 }
 
 tic();
